@@ -13,17 +13,23 @@ public class City : MonoBehaviour {
     public float PopulationCeiling { get; set; }
     public float JobsCurrent { get; set; }
     public float JobsCeiling { get; set; }
-    public int[] buildingCounts = new int [3];
+    public int[] buildingCounts = new int [4];
 
     UIController uIController;
     // Use this for initialization
     void Start () {
-        Cash = 10;
+        Cash = 100000;
+        CashNextTurn = 0;
+        Day = 0;
         Food = 5;
-        JobsCeiling = 10;
+        PopulationCeiling = 0;
+        PopulationNextTurn = 0;
+        PopulationCurrent = 0;
+        JobsCeiling = 0;
+        JobsCurrent = 0; 
         uIController = GetComponent<UIController>();
-        uIController.UpdateCityData();
-        uIController.UpdateDayCount();
+       
+
     }
 
     public void EndTurn()
@@ -39,11 +45,14 @@ public class City : MonoBehaviour {
     }
     void CalculateJobs()
     {
-        JobsCeiling = buildingCounts[2] * 10; //por cada fabrica 10 
+        JobsCeiling = buildingCounts[3] * 10; //por cada fabrica 10 
         JobsCurrent = Mathf.Min((int)PopulationCurrent ,JobsCeiling); //coge el minimo de los 2
 
     }
-
+    public void DepositCash(int deposit)
+    {
+        Cash += deposit;
+    }
     void CalculateCash()
     {
         int aux = Cash;
@@ -54,13 +63,13 @@ public class City : MonoBehaviour {
 
     void CalculateFood()
     {
-        Food += buildingCounts[1] * 4f;
+        Food += buildingCounts[2] * 4f;
     }
 
     void CalculatePopulation()
     {
         float aux = PopulationCurrent;
-        PopulationCeiling = buildingCounts[0] * 5;
+        PopulationCeiling = buildingCounts[1] * 5;
         if(Food >= PopulationCurrent && PopulationCurrent < PopulationCeiling)
         {
             Food -= PopulationCurrent *.5f;//cada 0.5 food alimenta a 1 
@@ -70,7 +79,6 @@ public class City : MonoBehaviour {
         {
             PopulationCurrent -= (PopulationCurrent - Food)*.5f;
         }
-        Debug.Log(PopulationNextTurn);
         PopulationNextTurn = (PopulationCurrent-aux);
     }
 }
