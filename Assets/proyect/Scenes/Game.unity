@@ -411,6 +411,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372694407}
+  - component: {fileID: 372694408}
+  - component: {fileID: 372694409}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -438,6 +440,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372694408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372694406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15688560f3c06e4bb30aae49fcf6abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &372694409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372694406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8415bcd25c75854dbe7335b8e2db879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCounts: 050000000400000002000000
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +534,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 0, y: 3.58, z: -0.41}
+  m_LocalPosition: {x: 0, y: 5.92, z: -0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 372694407}
@@ -1387,7 +1412,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1599249781}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 372694409}
+        m_MethodName: EndTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1599249781
