@@ -5,31 +5,36 @@ using UnityEngine;
 public class City : MonoBehaviour {
     
     public int Cash { get; set; }
+    public int CashNextTurn { get; set; }
     public int Day { get; set; }
     public float Food { get; set; }
     public float PopulationCurrent { get; set; }
+    public float PopulationNextTurn { get; set; }
     public float PopulationCeiling { get; set; }
     public float JobsCurrent { get; set; }
     public float JobsCeiling { get; set; }
-
     public int[] buildingCounts = new int [3];
+
+    UIController uIController;
     // Use this for initialization
     void Start () {
-        Cash = 10000;
+        Cash = 10;
         Food = 5;
         JobsCeiling = 10;
-
-	}
+        uIController = GetComponent<UIController>();
+        uIController.UpdateCityData();
+        uIController.UpdateDayCount();
+    }
 
     public void EndTurn()
     {
         Day++;
-        Debug.Log("heeey");
+        CalculateCash();
         CalculatePopulation();
         CalculateJobs();
-        CalculateCash();
         CalculateFood();
-        Debug.LogFormat("Jobs: {0}/{1},Cash: {2},pop:{3}/{4},Food:{5}",JobsCurrent,JobsCeiling,Cash,PopulationCurrent,PopulationCeiling,Food);
+        uIController.UpdateCityData();
+        uIController.UpdateDayCount();
         
     }
     void CalculateJobs()
@@ -41,7 +46,10 @@ public class City : MonoBehaviour {
 
     void CalculateCash()
     {
+        int aux = Cash;
         Cash += (int)JobsCurrent * 2;
+        CashNextTurn = Cash-aux;
+        
     }
 
     void CalculateFood()
@@ -51,6 +59,7 @@ public class City : MonoBehaviour {
 
     void CalculatePopulation()
     {
+        float aux = PopulationCurrent;
         PopulationCeiling = buildingCounts[0] * 5;
         if(Food >= PopulationCurrent && PopulationCurrent < PopulationCeiling)
         {
@@ -61,5 +70,7 @@ public class City : MonoBehaviour {
         {
             PopulationCurrent -= (PopulationCurrent - Food)*.5f;
         }
+        Debug.Log(PopulationNextTurn);
+        PopulationNextTurn = (PopulationCurrent-aux);
     }
 }

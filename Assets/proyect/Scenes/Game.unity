@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 372694407}
   - component: {fileID: 372694408}
   - component: {fileID: 372694409}
+  - component: {fileID: 372694410}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -462,7 +463,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8415bcd25c75854dbe7335b8e2db879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingCounts: 050000000400000002000000
+  buildingCounts: 010000000100000001000000
+--- !u!114 &372694410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372694406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f40864eadbeda40b3bfc80088ea440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cityText: {fileID: 2119208319}
+  dayText: {fileID: 873870865}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +612,7 @@ GameObject:
   - component: {fileID: 622057419}
   - component: {fileID: 622057418}
   m_Layer: 5
-  m_Name: Text
+  m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,7 +1058,7 @@ GameObject:
   - component: {fileID: 873870866}
   - component: {fileID: 873870865}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,7 +1114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Day 15
+  m_Text: Day 0
 --- !u!222 &873870866
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2076,7 +2090,7 @@ GameObject:
   - component: {fileID: 2119208320}
   - component: {fileID: 2119208319}
   m_Layer: 5
-  m_Name: Text
+  m_Name: city
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
